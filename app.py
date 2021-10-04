@@ -1,4 +1,5 @@
 from flask import Flask, request
+from CompanyFactory import FactoryPicPay
 from utils.response import response
 
 app = Flask(__name__)
@@ -11,7 +12,9 @@ def run_all():
 
 @app.route('/run/<company_name>', methods=["GET"])
 def run_one(company_name):
-    return response(200, f'Run only one company : {company_name}')
+    fact = FactoryPicPay()
+    dados = fact.scrape()
+    return response(200, "Successo" , "PicPay", dados)
 
 
 if __name__ == '__main__':
