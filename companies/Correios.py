@@ -10,7 +10,7 @@ from utils.extrair_inteiro import extrair_inteiro
 class Correios(Company):
 
     def execute(self) -> str:
-        driver = webdriver.Chrome('../chromedriver')
+        driver = webdriver.Chrome('chromedriver')
 
         driver.get('https://www.reclameaqui.com.br/')
 

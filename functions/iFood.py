@@ -20,7 +20,7 @@ def extrair_inteiro(texto):
 	except:
 		return 0
 
-driver = webdriver.Chrome("./chromedriver")
+driver = webdriver.Chrome("../../../chromedriver")
 
 driver.get('https://www.reclameaqui.com.br/')
 

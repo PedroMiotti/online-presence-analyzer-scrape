@@ -1,5 +1,7 @@
 import Company
-from companies import Correios, PicPay, Ifood
+from companies.Correios import Correios
+from companies.Ifood import Ifood
+from companies.PicPay import PicPay
 from Factory import Factory
 
 

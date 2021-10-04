@@ -4,31 +4,32 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 from utils.extrair_inteiro import extrair_inteiro
 
 
 class Ifood(Company):
 
     def execute(self) -> str:
-        driver = webdriver.Chrome('../chromedriver')
+        driver = webdriver.Chrome(ChromeDriverManager().install())
 
         driver.get('https://www.reclameaqui.com.br/')
 
-        input = WebDriverWait(driver, 10).until(
+        input = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
         )
 
-        input.send_keys('PicPay')
+        input.send_keys('iFood')
         input.send_keys(Keys.RETURN)
 
-        link_pagina = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="PicPay"]'))
+        link_pagina = WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="iFood"]'))
         )
         link_pagina.click()
 
         driver.execute_script("window.scrollTo(0, 300)")
 
-        select_geral = WebDriverWait(driver, 10).until(
+        select_geral = WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
         select_geral.click()
@@ -52,7 +53,6 @@ class Ifood(Company):
         n_resp = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[1]/a/div/b')
 
         avaliadas = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[2]/a/div/b')
-
 
         dados['Reputacao_geral'] = rep_geral.text
         dados['Reclamacoes_total'] = reclamacoes.text

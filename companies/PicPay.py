@@ -4,13 +4,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 from utils.extrair_inteiro import extrair_inteiro
 
 
 class PicPay(Company):
 
     def execute(self) -> str:
-        driver = webdriver.Chrome('../chromedriver')
+        driver = webdriver.Chrome(ChromeDriverManager().install())
 
         driver.get('https://www.reclameaqui.com.br/')
 

@@ -1,5 +1,5 @@
 from flask import Flask, request
-from CompanyFactory import FactoryPicPay
+from CompanyFactory import CompanyFactory
 from utils.response import response
 
 app = Flask(__name__)
@@ -12,9 +12,9 @@ def run_all():
 
 @app.route('/run/<company_name>', methods=["GET"])
 def run_one(company_name):
-    fact = FactoryPicPay()
-    dados = fact.scrape()
-    return response(200, "Successo" , "PicPay", dados)
+    factory = CompanyFactory()
+    dados = factory.scrape(company_name)
+    return response(200, "Successo", f'Empresa: {company_name}', dados)
 
 
 if __name__ == '__main__':
