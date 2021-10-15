@@ -1,17 +1,16 @@
 from Company import Company
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from utils.extrair_inteiro import extrair_inteiro
 
 
 class PicPay(Company):
 
-    def execute(self) -> str:
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+    def execute(self, driver) -> str:
+        dados = {}
+        dados["empresa_id"] = 1
+        dados["nome_empresa"] = "PicPay"
 
         driver.get('https://www.reclameaqui.com.br/')
 
@@ -25,6 +24,7 @@ class PicPay(Company):
         link_pagina = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="PicPay"]'))
         )
+
         link_pagina.click()
 
         driver.execute_script("window.scrollTo(0, 300)")
@@ -32,9 +32,8 @@ class PicPay(Company):
         select_geral = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
-        select_geral.click()
 
-        dados = {}
+        select_geral.click()
 
         rep_geral = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[1]/div[1]/div[2]/span[2]/b')
 
@@ -54,17 +53,14 @@ class PicPay(Company):
 
         avaliadas = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[2]/a/div/b')
 
-
-        dados['Reputacao_geral'] = rep_geral.text
-        dados['Reclamacoes_total'] = reclamacoes.text
-        dados['Respondidas_total'] = respondidas.text
-        dados['Porcentagem_resp'] = pct_resp.text
-        dados['Voltaria_negocio'] = pct_volt.text
-        dados['Indice_solucao'] = ind_sol.text
-        dados['Nota'] = nota.text
-        dados['N_respondidas'] = n_resp.text
-        dados['Avaliadas'] = avaliadas.text
-
-        # driver.close()
+        dados['reputacao_geral'] = rep_geral.text
+        dados['reclamacoes_total'] = reclamacoes.text
+        dados['respondidas_total'] = respondidas.text
+        dados['porcentagem_resp'] = pct_resp.text
+        dados['voltaria_negocio'] = pct_volt.text
+        dados['indice_solucao'] = ind_sol.text
+        dados['nota'] = nota.text
+        dados['n_respondidas'] = n_resp.text
+        dados['avaliadas'] = avaliadas.text
 
         return dados

@@ -5,5 +5,5 @@ from abc import ABC, abstractmethod
 class Company(ABC):
 
     @abstractmethod
-    def execute(self) -> str:
+    def execute(self, driver) -> str:
         pass
