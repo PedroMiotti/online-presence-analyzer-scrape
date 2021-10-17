@@ -2,6 +2,9 @@ import Company
 from companies.Correios import Correios
 from companies.Ifood import Ifood
 from companies.PicPay import PicPay
+from companies.NuBank import NuBank
+from companies.MagazineLuiza import MagazineLuiza
+from companies.MercadoLivre import MercadoLivre
 from Factory import Factory
 
 
@@ -14,3 +17,9 @@ class CompanyFactory(Factory):
             return Ifood()
         elif company_name == "correios":
             return Correios()
+        elif company_name == "mercadolivre":
+            return MercadoLivre()
+        elif company_name == "nubank":
+            return NuBank()
+        elif company_name == "magazineluiza":
+            return MagazineLuiza()

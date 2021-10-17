@@ -5,33 +5,32 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Ifood(Company):
+class MagazineLuiza(Company):
 
     def execute(self, driver) -> str:
         dados = {}
-        dados["empresa_id"] = 2
-        dados["nome_empresa"] = "Ifood"
+        dados["empresa_id"] = 4
+        dados["nome_empresa"] = "MagazineLuiza"
 
         driver.get('https://www.reclameaqui.com.br/')
 
-        input = WebDriverWait(driver, 10).until(
+        input = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
         )
 
-        input.send_keys('iFood')
+        input.send_keys('Magazine Luiza')
         input.send_keys(Keys.RETURN)
 
-        link_pagina = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="iFood"]'))
+        link_pagina = WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="Magazine Luiza - Loja Online"]'))
         )
         link_pagina.click()
 
         driver.execute_script("window.scrollTo(0, 300)")
 
-        select_geral = WebDriverWait(driver, 10).until(
+        select_geral = WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
-
         select_geral.click()
 
         rep_geral = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[1]/div[1]/div[2]/span[2]/b')

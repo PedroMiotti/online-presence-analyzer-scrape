@@ -5,12 +5,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Ifood(Company):
+class NuBank(Company):
 
     def execute(self, driver) -> str:
         dados = {}
-        dados["empresa_id"] = 2
-        dados["nome_empresa"] = "Ifood"
+        dados["empresa_id"] = 5
+        dados["nome_empresa"] = "NuBank"
 
         driver.get('https://www.reclameaqui.com.br/')
 
@@ -18,11 +18,11 @@ class Ifood(Company):
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
         )
 
-        input.send_keys('iFood')
+        input.send_keys('Nubank')
         input.send_keys(Keys.RETURN)
 
         link_pagina = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="iFood"]'))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="Nubank"]'))
         )
         link_pagina.click()
 
@@ -31,7 +31,6 @@ class Ifood(Company):
         select_geral = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
-
         select_geral.click()
 
         rep_geral = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[1]/div[1]/div[2]/span[2]/b')

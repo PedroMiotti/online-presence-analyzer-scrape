@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/run', methods=["GET"])
 def run_all():
-    allCompanies = ["picpay", "correios"]
+    allCompanies = ["picpay", "correios", "ifood", "mercadolivre", "nubank", "magazineluiza"]
     data = []
 
     factory = CompanyFactory()
