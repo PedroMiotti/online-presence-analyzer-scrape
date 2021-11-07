@@ -12,16 +12,18 @@ class Correios(Company):
         dados["empresa_id"] = 3
         dados["nome_empresa"] = "Correios"
 
+        waittime=10
+
         driver.get('https://www.reclameaqui.com.br/')
 
-        input = WebDriverWait(driver, 20).until(
+        input = WebDriverWait(driver, waittime).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
         )
 
         input.send_keys('Correios')
         input.send_keys(Keys.RETURN)
 
-        link_pagina = WebDriverWait(driver, 20).until(
+        link_pagina = WebDriverWait(driver, waittime).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="Correios "]'))
             # aparentemente esse espaço muda tudo
         )
@@ -29,7 +31,7 @@ class Correios(Company):
 
         driver.execute_script("window.scrollTo(0, 300)")
 
-        select_geral = WebDriverWait(driver, 20).until(
+        select_geral = WebDriverWait(driver, waittime).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
 
