@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 
 class Ifood(Company):
@@ -12,27 +13,17 @@ class Ifood(Company):
         dados["empresa_id"] = 2
         dados["nome_empresa"] = "Ifood"
 
-        driver.get('https://www.reclameaqui.com.br/')
+        driver.get('https://www.reclameaqui.com.br/empresa/ifood')
 
-        waittime=25
-
-        input = WebDriverWait(driver, waittime).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
-        )
-
-        input.send_keys('iFood')
-        input.send_keys(Keys.RETURN)
-
-        link_pagina = WebDriverWait(driver, waittime).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="iFood"]'))
-        )
-        link_pagina.click()
+        waittime=10
 
         driver.execute_script("window.scrollTo(0, 300)")
 
         select_geral = WebDriverWait(driver, waittime).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
+
+        time.sleep(3)
 
         select_geral.click()
 

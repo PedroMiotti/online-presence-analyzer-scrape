@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 
 class MagazineLuiza(Company):
@@ -12,27 +13,18 @@ class MagazineLuiza(Company):
         dados["empresa_id"] = 4
         dados["nome_empresa"] = "MagazineLuiza"
 
-        driver.get('https://www.reclameaqui.com.br/')
+        driver.get('https://www.reclameaqui.com.br/empresa/magazine-luiza-loja-online/')
 
-        waittime = 23
-
-        input = WebDriverWait(driver, waittime).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'input[type="text"]'))
-        )
-
-        input.send_keys('Magazine Luiza')
-        input.send_keys(Keys.RETURN)
-
-        link_pagina = WebDriverWait(driver, waittime).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'img[title="Magazine Luiza - Loja Online"]'))
-        )
-        link_pagina.click()
+        waittime = 10
 
         driver.execute_script("window.scrollTo(0, 300)")
 
         select_geral = WebDriverWait(driver, waittime).until(
             EC.element_to_be_clickable((By.XPATH, "//button[text()='Geral']"))
         )
+
+        time.sleep(2)
+
         select_geral.click()
 
         rep_geral = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[1]/div[1]/div[2]/span[2]/b')

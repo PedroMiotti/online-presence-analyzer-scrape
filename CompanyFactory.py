@@ -17,9 +17,9 @@ class CompanyFactory(Factory):
             return Ifood()
         elif company_name == "correios":
             return Correios()
-        elif company_name == "mercadolivre":
+        elif company_name == "mercado-livre":
             return MercadoLivre()
         elif company_name == "nubank":
             return NuBank()
-        elif company_name == "magazineluiza":
+        elif company_name == "magalu":
             return MagazineLuiza()
