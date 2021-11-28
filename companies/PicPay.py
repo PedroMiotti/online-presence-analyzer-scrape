@@ -33,17 +33,17 @@ class PicPay(Company):
 
         respondidas = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[1]/div[2]/a[2]/div/div/b')
 
-        pct_resp = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[1]/div[1]/span')
+        pct_resp = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[1]/span')
 
-        pct_volt = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[1]/div[2]/span')
+        pct_volt = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[2]/span')
 
-        ind_sol = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[1]/div[3]/span')
+        ind_sol = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[3]/span')
 
-        nota = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[1]/div[4]/span')
+        nota = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[4]/span')
 
-        n_resp = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[1]/a/div/b')
+        n_resp = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[3]/div[1]/a/div/b')
 
-        avaliadas = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[2]/div[2]/a/div/b')
+        avaliadas = driver.find_element(By.XPATH, '//*[@id="reputation"]/div[2]/div[3]/div[2]/a/div/b')
 
         dados['reputacao_geral'] = rep_geral.text
         dados['reclamacoes_total'] = reclamacoes.text
